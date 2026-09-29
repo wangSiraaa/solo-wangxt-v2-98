@@ -1,0 +1,16 @@
+{
+  "name": "cash-center",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev:server": "npm --workspace server run dev",
+    "dev:web": "npm --workspace web run dev",
+    "build": "npm --workspace server run build && npm --workspace web run build",
+    "test": "npm --workspace server run test",
+    "verify": "npm --workspace server run verify"
+  }
+}
