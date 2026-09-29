@@ -1,0 +1,22 @@
+# 有 docker 的环境：直接用官方 PostgreSQL 镜像启动
+# 后端默认连接：PGHOST=127.0.0.1 PGPORT=5432 PGUSER=cashapp PGPASSWORD=cashpass PGDATABASE=cashcenter
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: cashcenter-pg
+    environment:
+      POSTGRES_USER: cashapp
+      POSTGRES_PASSWORD: cashpass
+      POSTGRES_DB: cashcenter
+    ports:
+      - "5432:5432"
+    volumes:
+      - cashcenter_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cashapp -d cashcenter"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  cashcenter_pgdata:

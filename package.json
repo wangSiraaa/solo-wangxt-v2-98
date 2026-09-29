@@ -1,0 +1,16 @@
+{
+  "name": "cash-center",
+  "private": true,
+  "version": "1.0.0",
+  "description": "现金配钞模拟系统：有界整数配钞 + 事务预占 + 出钞回报核对（Vue 3 + NestJS + PostgreSQL）",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@cash/server && npm run build --workspace=@cash/web",
+    "start:server": "npm run start --workspace=@cash/server",
+    "dev:server": "npm run dev --workspace=@cash/server",
+    "dev:web": "npm run dev --workspace=@cash/web",
+    "verify": "node scripts/verify.mjs"
+  }
+}
